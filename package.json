@@ -1,6 +1,6 @@
 {
   "name": "path-shorten",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "detect and shorten, color, manipulate paths",
   "main": "path-shorten.js",
   "scripts": {
