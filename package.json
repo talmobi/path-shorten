@@ -4,14 +4,15 @@
   "description": "detect and shorten, color, manipulate paths",
   "main": "path-shorten.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "npm test",
+    "test": "node test/test.js | faucet"
   },
   "keywords": [
     ""
   ],
   "author": "talmobi <talmo.christian@gmail.com>",
-  "license": "UNLICENSED",
-  "private": true,
+  "license": "MIT",
+  "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/talmobi/"
