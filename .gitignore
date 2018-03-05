@@ -3,5 +3,8 @@ node_modules
 # mac files
 *.DS_Store
 
+# dist src
+dist/path-shorten.js
+
 # vim files
 *.sw?
