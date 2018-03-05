@@ -15,7 +15,7 @@ var defaultOptions = {
 }
 
 var api = function ( text, opts ) {
-  opts = opts || Object.assign( {}, defaultOptions, opts )
+  opts = Object.assign( {}, defaultOptions, opts || {} )
   var result = text
 
   if ( opts.home && opts.homedir ) {
@@ -144,6 +144,10 @@ var api = function ( text, opts ) {
       if ( head ) {
         // buffer = head + '/' + buffer
         buffer = head + buffer
+      }
+
+      if ( typeof opts.post === 'function' ) {
+        return opts.post( buffer + tail )
       }
 
       return buffer + tail
