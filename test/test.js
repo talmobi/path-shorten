@@ -1,4 +1,4 @@
-const pathShorten = require( '../path-shorten.js' )
+const pathShorten = require( '../dist/path-shorten.min.js' )
 
 const test = require( 'tape' )
 
