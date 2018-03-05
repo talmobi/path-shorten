@@ -1,10 +1,16 @@
 {
   "name": "path-shorten",
   "version": "0.0.1",
-  "description": "detect and shorten, color, manipulate paths",
-  "main": "path-shorten.js",
+  "description": "detect and shorten, manipulate paths",
+  "main": "path-shorten.min.js",
+  "files": [
+    "dist/path-shorten.min.js"
+  ],
   "scripts": {
-    "prepublish": "npm test",
+    "build": "npm run build:src && npm run uglify",
+    "build:src": "browserify --node --no-bundle-external --standalone pathShorten -t [ babelify --presets [ env ] ] src/path-shorten.js -o dist/path-shorten.js",
+    "uglify": "uglifyjs dist/path-shorten.js -cmo dist/path-shorten.min.js",
+    "prepublish": "npm run build && npm test",
     "test": "node test/test.js | faucet"
   },
   "keywords": [
@@ -23,7 +29,12 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "babel-core": "~6.26.0",
+    "babel-preset-env": "~1.6.1",
+    "babelify": "~8.0.0",
+    "browserify": "~16.1.0",
     "faucet": "0.0.1",
-    "tape": "~4.9.0"
+    "tape": "~4.9.0",
+    "uglify-js": "~3.3.13"
   }
 }
