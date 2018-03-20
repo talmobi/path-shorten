@@ -91,3 +91,18 @@ test( 'path 11', function ( t ) {
   )
 } )
 
+test( 'test opts.post function', function ( t ) {
+  t.plan( 1 )
+
+  const opts = {
+    post: function ( url ) {
+      return '[ ' + url + ' ]'
+    }
+  }
+
+  t.equal(
+    pathShorten( 'whale giraffe /one/two/three/four/five.txt cottage', opts ),
+    'whale giraffe [ /one/two/thr/fou/five.txt ] cottage'
+  )
+} )
+
