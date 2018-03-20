@@ -28,16 +28,24 @@ Simple string manipulation.
 
 ```javascript
 const pathShorten = require( 'path-shorten' )
-const defaultOptions = {
+
+// default options
+const opts = {
   home: true, // attempt to transform homedir to '~'
   homedir: require( 'os' ).homedir(),
   length: 3, // path truncation max length
 }
+
+// post transformation function
+opts.post = function ( url ) {
+  return '[ ' + url + ' ]'
+}
+
 const text = 'text with /path/like/stuff.txt'
-console.log( pathShorten( text, defaultOptions ) )
+console.log( pathShorten( text, opts ) )
 ```
 
-> 'text with /pat/lik/stuff.txt'
+> 'text with [ /pat/lik/stuff.txt ]'
 
 # Other
 
