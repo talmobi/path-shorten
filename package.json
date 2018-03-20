@@ -1,6 +1,6 @@
 {
   "name": "path-shorten",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "detect and shorten, manipulate paths",
   "main": "dist/path-shorten.min.js",
   "files": [
