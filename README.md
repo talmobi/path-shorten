@@ -11,7 +11,9 @@ console.log( pathShorten( 'C:\\Users\\mollie\\Documents\\\\some-project' ) )
 console.log( pathShorten( '/Users/mollie/foo/bar' ) )
 ```
 > /one/two/thr/fou/five.txt
+
 > c/Use/mol/Doc/some-project
+
 > ~/foo/bar
 
 # Why
@@ -31,7 +33,11 @@ const defaultOptions = {
   homedir: require( 'os' ).homedir(),
   length: 3, // path truncation max length
 }
+const text = 'text with /path/like/stuff.txt'
+console.log( pathShorten( text, defaultOptions ) )
 ```
+
+> 'text with /pat/lik/stuff.txt'
 
 # Other
 
