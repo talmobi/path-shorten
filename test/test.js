@@ -1,4 +1,6 @@
-const pathShorten = require( '../dist/path-shorten.min.js' )
+let pathShorten = require( '../dist/path-shorten.min.js' )
+
+if ( process.env.test_source ) pathShorten = require( '../src/path-shorten.js' )
 
 const test = require( 'tape' )
 
