@@ -97,7 +97,7 @@ test( 'test opts.pre function', function ( t ) {
 
   const opts = {
     pre: function ( url ) {
-      t.equal( url, '/one/two/three/four/five.txt', 'receive detected path as is before any transformations' )
+      t.equal( url, '/one/two/three/four/five.txt', 'received opts.pre before shortening' )
       return 'NONE'
     }
   }
@@ -105,6 +105,22 @@ test( 'test opts.pre function', function ( t ) {
   t.equal(
     pathShorten( 'whale giraffe /one/two/three/four/five.txt cottage', opts ),
     'whale giraffe NONE cottage'
+  )
+} )
+
+test( 'test opts.pre function normalized path', function ( t ) {
+  t.plan( 2 )
+
+  const opts = {
+    pre: function ( url ) {
+      t.equal( url, '\'c/Users/talmoch/Documents/valmet-iseal\'', 'opts.pre before shortening but after normalization' )
+      return 'NONE'
+    }
+  }
+
+  t.equal(
+    pathShorten( '   console.error("Error: Cannot find module \'storex.js\' from \'C:\\\\Users\\\\talmoch\\\\Documents\\\\valmet-iseal\' foo bar', opts ),
+    '   console.error("Error: Cannot find module \'storex.js\' from NONE foo bar'
   )
 } )
 
