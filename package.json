@@ -10,9 +10,9 @@
     "build": "npm run build:src && npm run uglify",
     "build:src": "browserify --node --no-bundle-external --standalone pathShorten -t [ babelify --presets [ @babel/preset-env ] ] src/path-shorten.js -o dist/path-shorten.js",
     "uglify": "uglifyjs dist/path-shorten.js -cmo dist/path-shorten.min.js",
-    "prepare": "npm run build && npm test",
+    "prepublishOnly": "npm run build && npm test",
     "test:source": "test_source=1 node test/test.js",
-    "test": "npm run build && node test/test.js | faucet"
+    "test": "node test/test.js | faucet"
   },
   "keywords": [
     ""
