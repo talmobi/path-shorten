@@ -65,6 +65,11 @@ var api = function ( text, opts ) {
   }
 
   function processWord ( word ) {
+    // user defined overwrite
+    if ( typeof opts.processWord === 'function' ) {
+      return opts.processWord( word )
+    }
+
     if (
       // word.indexOf( '.' ) >= 0 ||
       word.indexOf( '/' ) >= 0 ||
