@@ -8,6 +8,12 @@ try {
   /* ignore */
 }
 
+function debugLog ( msg ) {
+  if ( process.env.debug_path_shorten ) {
+    console.log( msg )
+  }
+}
+
 var defaultOptions = {
   home: true, // attempt to transform homedir to '~' by default
   homedir: HOME_DIR, // homedir to detect
@@ -33,7 +39,7 @@ var api = function ( text, opts ) {
       // normalize windows slashies
       word = word.split( '\\\\' ).join( '/' )
 
-      console.log( 'word: ' + word )
+      debugLog( 'word: ' + word )
 
       var head = ''
       while (
@@ -63,7 +69,7 @@ var api = function ( text, opts ) {
 
           while ( !drive[ 0 ].match( /[a-zA-Z]/ ) ) {
             drive = before.slice( before.length - drive.length + 1 )
-            console.log( 'drive: ' + drive )
+            debugLog( 'drive: ' + drive )
           }
 
           var driveOkay = (
