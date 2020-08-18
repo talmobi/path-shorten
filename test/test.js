@@ -92,8 +92,22 @@ test( 'path 11', function ( t ) {
   )
 } )
 
-test( 'test opts.post function', function ( t ) {
-  t.plan( 1 )
+test( 'test opts.pre function', function ( t ) {
+  t.plan( 2 )
+
+  const opts = {
+    pre: function ( url ) {
+      t.equal( url, '/one/two/three/four/five.txt', 'receive detected path as is before any transformations' )
+      return 'NONE'
+    }
+  }
+
+  t.equal(
+    pathShorten( 'whale giraffe /one/two/three/four/five.txt cottage', opts ),
+    'whale giraffe NONE cottage'
+  )
+} )
+
 
   const opts = {
     post: function ( url ) {
