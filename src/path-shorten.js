@@ -22,15 +22,49 @@ var defaultOptions = {
 
 var api = function ( text, opts ) {
   opts = Object.assign( {}, defaultOptions, opts || {} )
-  var result = text
+  var inputBuffer = text
+  var outputBuffer = ''
 
   if ( opts.home && opts.homedir ) {
-    result = text.split( opts.homedir ).join( '~' )
+    inputBuffer = text.split( opts.homedir ).join( '~' )
   }
 
-  var words = result.split( /\s+/ )
+  function nextWord () {
+    var match = inputBuffer.match( /\s+/ )
 
-  words = words.map( function ( word, ind, arr ) {
+    if ( !match ) {
+      // no whitespace found, treat the rest of the inputBuffer
+      // as a single (and last) word
+      if ( inputBuffer ) {
+        outputBuffer += processWord( inputBuffer )
+      }
+
+      inputBuffer = ''
+    } else {
+      var whitespace = match[ 0 ]
+      var index = match.index
+
+      if ( index > 0 ) {
+        // there's some text before the whitespace
+        var word = inputBuffer.slice( 0, index )
+        inputBuffer = inputBuffer.slice( word.length + whitespace.length )
+        outputBuffer += processWord( word ) + whitespace
+      } else if ( index === 0 ) {
+        // no text, cut off the whitespace
+        inputBuffer = inputBuffer.slice( whitespace.length )
+        outputBuffer += whitespace
+      } else {
+        throw new Error( 'no match found should have already been handled bfore reaching here' )
+      }
+    }
+
+    return inputBuffer
+  }
+
+  while ( nextWord() ) {
+  }
+
+  function processWord ( word ) {
     if (
       // word.indexOf( '.' ) >= 0 ||
       word.indexOf( '/' ) >= 0 ||
@@ -161,11 +195,9 @@ var api = function ( text, opts ) {
     }
 
     return word
-  } )
+  }
 
-  return (
-    words.join( ' ' )
-  )
+  return outputBuffer
 }
 
 function normalize ( path ) {
