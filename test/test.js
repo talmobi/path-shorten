@@ -108,9 +108,12 @@ test( 'test opts.pre function', function ( t ) {
   )
 } )
 
+test( 'test opts.post function', function ( t ) {
+  t.plan( 2 )
 
   const opts = {
     post: function ( url ) {
+      t.equal( url, '/one/two/thr/fou/five.txt', 'receive transformed url in opts.post' )
       return '[ ' + url + ' ]'
     }
   }
