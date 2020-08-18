@@ -124,3 +124,13 @@ test( 'test opts.post function', function ( t ) {
   )
 } )
 
+test( 'shorten paths while keeping whitespace in-between paths', function ( t ) {
+  t.plan( 1 )
+
+  const opts = {}
+
+  t.equal(
+    pathShorten( 'whale    giraffe /one/two/three/four/five.txt cottage /another/path     ', opts ),
+    'whale    giraffe /one/two/thr/fou/five.txt cottage /ano/path     '
+  )
+} )
