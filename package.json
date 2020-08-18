@@ -12,7 +12,8 @@
     "uglify": "uglifyjs dist/path-shorten.js -cmo dist/path-shorten.min.js",
     "prepublishOnly": "npm run build && npm test",
     "test:source": "test_source=1 node test/test.js",
-    "test": "node test/test.js | faucet"
+    "test:dist": "node test/test.js",
+    "test": "npm run test:source && npm run test:dist"
   },
   "keywords": [
     ""
