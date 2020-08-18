@@ -20,7 +20,6 @@ test( 'path 2', function ( t ) {
   )
 } )
 
-
 test( 'path 3', function ( t ) {
   t.plan( 1 )
   t.equal(
