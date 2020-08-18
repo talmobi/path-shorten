@@ -1,5 +1,8 @@
 [![npm](https://img.shields.io/npm/v/path-shorten.svg?maxAge=3600&style=flat-square)](https://www.npmjs.com/package/path-shorten)
 [![npm](https://img.shields.io/npm/l/path-shorten.svg?maxAge=3600&style=flat-square)](https://github.com/talmobi/path-shorten/blob/master/LICENSE)
+![mac](https://github.com/talmobi/path-shorten/workflows/mac/badge.svg)
+![ubuntu](https://github.com/talmobi/path-shorten/workflows/ubuntu/badge.svg)
+![windows](https://github.com/talmobi/path-shorten/workflows/windows/badge.svg)
 
 # path-shorten
 
