@@ -83,6 +83,10 @@ var api = function ( text, opts ) {
         word = word.slice( 1 )
       }
 
+      if ( typeof opts.pre === 'function' ) {
+        word = opts.pre( word )
+      }
+
       // if ( word[ 0 ] === '\'' ) {
       //   head += '\''
       // }
