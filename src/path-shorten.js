@@ -83,10 +83,6 @@ var api = function ( text, opts ) {
         word = word.slice( 1 )
       }
 
-      if ( typeof opts.pre === 'function' ) {
-        word = opts.pre( word )
-      }
-
       // if ( word[ 0 ] === '\'' ) {
       //   head += '\''
       // }
@@ -141,6 +137,10 @@ var api = function ( text, opts ) {
 
       // cut off any trailing '/'
       while ( word.length > 1 && word[ word.length - 1 ] === '/' ) word = word.slice( 0, -1 )
+
+      if ( typeof opts.pre === 'function' ) {
+        return opts.pre( head + word )
+      }
 
       var pathNames = word.split( '/' )
       var tail = pathNames.pop() // keep tail ( filename ) as is
