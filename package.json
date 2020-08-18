@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "npm run build:src && npm run uglify",
-    "build:src": "browserify --node --no-bundle-external --standalone pathShorten -t [ babelify --presets [ env ] ] src/path-shorten.js -o dist/path-shorten.js",
+    "build:src": "browserify --node --no-bundle-external --standalone pathShorten -t [ babelify --presets [ @babel/preset-env ] ] src/path-shorten.js -o dist/path-shorten.js",
     "uglify": "uglifyjs dist/path-shorten.js -cmo dist/path-shorten.min.js",
     "prepublish": "npm run build && npm test",
     "test": "node test/test.js | faucet"
@@ -29,11 +29,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "babel-core": "~6.26.0",
-    "babel-preset-env": "~1.6.1",
-    "babelify": "~8.0.0",
-    "browserify": "~16.1.0",
+    "@babel/core": "~7.11.1",
+    "@babel/preset-env": "~7.11.0",
     "@talmobi/faucet": "0.0.3",
+    "babelify": "~10.0.0",
+    "browserify": "~16.5.2",
     "tape": "~4.9.0",
     "uglify-js": "~3.3.13"
   }
