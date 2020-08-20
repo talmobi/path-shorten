@@ -150,3 +150,21 @@ test( 'shorten paths while keeping whitespace in-between paths', function ( t ) 
     'whale    giraffe /one/two/thr/fou/five.txt cottage /ano/path     '
   )
 } )
+
+test( 'remove slashed tail', function ( t ) {
+  t.plan( 1 )
+
+  t.equal(
+    pathShorten( 'path/to/file/' ),
+    'pat/to/file'
+  )
+} )
+
+test( 'normalize paths', function ( t ) {
+  t.plan( 1 )
+
+  t.equal(
+    pathShorten( 'path/to/file///.././' ), // NOTICE .. to move up 1 dir
+    'pat/to'
+  )
+} )
