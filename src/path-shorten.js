@@ -24,6 +24,9 @@ var api = function ( text, opts ) {
   var inputBuffer = text
   var outputBuffer = ''
 
+  if ( !opts.length ) opts.length = 3
+  if ( opts.length < 1 ) opts.length = 3
+
   if ( opts.home && opts.homedir ) {
     inputBuffer = text.split( opts.homedir ).join( '~' )
   }
