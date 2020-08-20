@@ -1,5 +1,4 @@
 // TODO
-
 var HOME_DIR = false
 
 try {
@@ -210,7 +209,20 @@ var api = function ( text, opts ) {
 }
 
 function normalize ( path ) {
-  return path.split( /\/+/ ).join( '/' )
+  var split = path.split( '/' )
+
+  var buf = []
+  split.forEach( function ( dir ) {
+    if ( dir === '..' ) {
+      buf.pop()
+    } else if ( dir === '.' ) {
+      // do nothing
+    } else if ( dir ) {
+      buf.push( dir )
+    }
+  } )
+
+  return buf.join( '/' )
 }
 
 module.exports = api
