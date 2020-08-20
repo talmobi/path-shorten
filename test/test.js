@@ -168,3 +168,25 @@ test( 'normalize paths', function ( t ) {
     'pat/to'
   )
 } )
+
+test( 'opts.length: -1', function ( t ) {
+  t.plan( 1 )
+
+  const opts = { length: -1 } // defaults to 3 when falsy or less than 1
+
+  t.equal(
+    pathShorten( 'path/to/file', opts ),
+    'pat/to/file'
+  )
+} )
+
+test( 'opts.length: 0', function ( t ) {
+  t.plan( 1 )
+
+  const opts = { length: 0 } // defaults to 3 when falsy or less than 1
+
+  t.equal(
+    pathShorten( 'path/to/file', opts ),
+    'pat/to/file'
+  )
+} )
